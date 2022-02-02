@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class counter extends Component {
     state = {
-        count: 0
+        count: 0,
+        tags:["tag1","tag2","tag3"],
     }
 
     render() {
@@ -10,6 +11,9 @@ class counter extends Component {
             <div>
                <span style={{ fontSize: 10 }} className={this.getBadgeClasses()}>{this.formatCount()}</span>
                 <button className="btn btn-secondary btn-sm">increment</button>
+                <ul>
+                    {this.state.tags.map(tag=> <li key={tag}>{tag}</li>)}
+                </ul>
             </div>
         );
     }
