@@ -3,41 +3,35 @@ import React, { Component } from 'react';
 class counter extends Component {
     state = {
         count: 0,
-        tags:[],
-        // tags:["tag1","tag2","tag3"],
+    };
+
+    // binding event handlers
+    constructor() {
+        super()
+        console.log("constructor", this);
+        this.handleIncrement = this.handleIncrement.bind(this);
     }
 
-    // 1st way:
-    renderTags(){
-        // if(this.state.tags.length === 0) return null;
-        if(this.state.tags.length === 0) return <p>There is no tags to display.</p>;
-        return <ul>{this.state.tags.map(tag=> <li key={tag}>{tag}</li>)}</ul>
+    handleIncrement() {
+        console.log("increment", this);
+    }
+
+    // event handlers using arrow function
+    handleDecrement = () => {
+        console.log("decrement", this);
     }
     render() {
         return (
             <div>
-                {/* 2nd way: */}
-                {this.state.tags.length === 0 && "No tags to display."}
-                {this.renderTags()}
+                <span style={{ fontSize: 10 }} className={this.getBadgeClasses()}>{this.formatCount()}</span>
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">increment</button>
+                <button onClick={this.handleDecrement} className="btn btn-warning btn-sm mx-2">decrement</button>
             </div>
         );
     }
 
-
-/*    render() {
-        return (
-            <div>
-               <span style={{ fontSize: 10 }} className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button className="btn btn-secondary btn-sm">increment</button>
-                <ul>
-                    {this.state.tags.map(tag=> <li key={tag}>{tag}</li>)}
-                </ul>
-            </div>
-        );
-    }
-
-    getBadgeClasses() {        
-        let classes  = "badge m-2 badge-";
+    getBadgeClasses() {
+        let classes = "badge m-2 badge-";
         classes += this.state.count === 0 ? "warning" : "primary";
         return classes;
     }
@@ -47,7 +41,7 @@ class counter extends Component {
         return count === 0 ? 'Zero' : count;
 
     }
-    */ 
+
 }
 
 export default counter;
