@@ -5,32 +5,21 @@ class counter extends Component {
         count: 0,
     };
 
-    /* binding event handlers
-    constructor() {
-        super()
-        console.log("constructor", this);
-        this.handleIncrement = this.handleIncrement.bind(this);
-    }
-
-    handleIncrement() {
-        console.log("increment", this);
-    }
-    */
 
     // event handlers using arrow function
-    handleIncrement = () => {
+    handleIncrement = (product) => {
+        console.log(product);
         this.setState({ count: this.state.count + 1 })
     }
 
-    handleDecrement = () => {
-        console.log("decrement", this);
+    doHandleIncrement = () => {
+        this.handleIncrement({id:1})
     }
     render() {
         return (
             <div>
                 <span style={{ fontSize: 10 }} className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">increment</button>
-                <button onClick={this.handleDecrement} className="btn btn-warning btn-sm mx-2">decrement</button>
+                <button onClick={this.doHandleIncrement} className="btn btn-secondary btn-sm">increment</button>
             </div>
         );
     }
