@@ -5,7 +5,7 @@ class counter extends Component {
         count: 0,
     };
 
-    // binding event handlers
+    /* binding event handlers
     constructor() {
         super()
         console.log("constructor", this);
@@ -15,8 +15,13 @@ class counter extends Component {
     handleIncrement() {
         console.log("increment", this);
     }
+    */
 
     // event handlers using arrow function
+    handleIncrement = () => {
+        this.setState({ count: this.state.count + 1 })
+    }
+
     handleDecrement = () => {
         console.log("decrement", this);
     }
