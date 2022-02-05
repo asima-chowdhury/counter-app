@@ -2,34 +2,35 @@ import React, { Component } from 'react';
 
 class counter extends Component {
     state = {
-        count: 0,
+        value: this.props.value,
     };
 
 
     // event handlers using arrow function
     handleIncrement = (product) => {
-        console.log(product);
-        this.setState({ count: this.state.count + 1 })
+        // console.log(product);
+        this.setState({ value: this.state.value + 1 })
     }
 
     render() {
+        // console.log('props',this.props);
         return (
             <div>
                 <span style={{ fontSize: 10 }} className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button onClick={() => this.handleIncrement({ id: 1 })} className="btn btn-secondary btn-sm">increment</button>
+                <button onClick={() => this.handleIncrement({ id: 1 })} className="btn btn-secondary btn-sm my-1">increment</button>
             </div>
         );
     }
 
     getBadgeClasses() {
         let classes = "badge m-2 badge-";
-        classes += this.state.count === 0 ? "warning" : "primary";
+        classes += this.state.value === 0 ? "warning" : "primary";
         return classes;
     }
 
     formatCount() {
-        const { count } = this.state;
-        return count === 0 ? 'Zero' : count;
+        const { value } = this.state;
+        return value === 0 ? 'Zero' : value;
 
     }
 
