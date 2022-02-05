@@ -5,19 +5,17 @@ class counter extends Component {
         value: this.props.value,
     };
 
-
-    // event handlers using arrow function
-    handleIncrement = (product) => {
-        // console.log(product);
-        this.setState({ value: this.state.value + 1 })
+    handleIncrement = () => {
+        this.setState({ count: this.state.value + 1 })
     }
 
     render() {
-        // console.log('props',this.props);
+        console.log('props', this.props);
         return (
             <div>
+                {this.props.children}
                 <span style={{ fontSize: 10 }} className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button onClick={() => this.handleIncrement({ id: 1 })} className="btn btn-secondary btn-sm my-1">increment</button>
+                <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm my-1">increment</button>
             </div>
         );
     }
